@@ -8,6 +8,8 @@ documentation = "https://docs.rs/lapacke"
 homepage = "https://github.com/stainless-steel/lapacke"
 repository = "https://github.com/stainless-steel/lapacke"
 readme = "README.md"
+categories = ["api-bindings", "science"]
+keywords = ["linear-algebra"]
 
 [dependencies]
 lapacke-sys = "0.1"
