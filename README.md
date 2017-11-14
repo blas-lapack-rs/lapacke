@@ -8,7 +8,11 @@ The package provides wrappers for [LAPACKE].
 use lapacke::*;
 
 let n = 3;
-let mut a = vec![3.0, 1.0, 1.0, 1.0, 3.0, 1.0, 1.0, 1.0, 3.0];
+let mut a = vec![
+    3.0, 1.0, 1.0,
+    1.0, 3.0, 1.0,
+    1.0, 1.0, 3.0,
+];
 let mut w = vec![0.0; n as usize];
 let info;
 
