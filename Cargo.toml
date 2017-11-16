@@ -1,12 +1,12 @@
 [package]
 name = "lapacke"
-version = "0.1.1"
+version = "0.1.2"
 license = "Apache-2.0/MIT"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
-description = "The package provides wrappers for LAPACKE."
+description = "The package provides wrappers for LAPACKE (C)."
 documentation = "https://docs.rs/lapacke"
-homepage = "https://github.com/stainless-steel/lapacke"
-repository = "https://github.com/stainless-steel/lapacke"
+homepage = "https://github.com/blas-lapack-rs/lapacke"
+repository = "https://github.com/blas-lapack-rs/lapacke"
 readme = "README.md"
 categories = ["api-bindings", "science"]
 keywords = ["linear-algebra"]

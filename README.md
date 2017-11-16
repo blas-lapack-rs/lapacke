@@ -1,6 +1,7 @@
 # LAPACKE [![Package][package-img]][package-url] [![Documentation][documentation-img]][documentation-url] [![Build][build-img]][build-url]
 
-The package provides wrappers for [LAPACKE].
+The package provides wrappers for [LAPACKE] (C). The usage of the package is
+explained [here][usage].
 
 ## Example
 
@@ -33,9 +34,10 @@ pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [lapacke]: https://en.wikipedia.org/wiki/LAPACK
+[usage]: https://blas-lapack-rs.github.io/usage
 
-[build-img]: https://travis-ci.org/stainless-steel/lapacke.svg?branch=master
-[build-url]: https://travis-ci.org/stainless-steel/lapacke
+[build-img]: https://travis-ci.org/blas-lapack-rs/lapacke.svg?branch=master
+[build-url]: https://travis-ci.org/blas-lapack-rs/lapacke
 [documentation-img]: https://docs.rs/lapacke/badge.svg
 [documentation-url]: https://docs.rs/lapacke
 [package-img]: https://img.shields.io/crates/v/lapacke.svg
