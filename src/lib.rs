@@ -1,4 +1,4 @@
-//! Wrappers for [LAPACKE] \(C)
+//! Wrappers for [LAPACKE] \(C).
 //!
 //! The usage of the package is explained [here][usage].
 //!
