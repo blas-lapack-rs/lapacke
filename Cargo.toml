@@ -1,6 +1,6 @@
 [package]
 name = "lapacke"
-version = "0.1.5"
+version = "0.2.0"
 license = "Apache-2.0/MIT"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 description = "The package provides wrappers for LAPACKE (C)."
