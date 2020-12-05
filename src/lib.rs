@@ -1,6 +1,6 @@
 //! Wrappers for [LAPACKE] \(C).
 //!
-//! The usage of the package is explained [here][usage].
+//! ## [Architecture]
 //!
 //! ## Example
 //!
@@ -26,8 +26,8 @@
 //! }
 //! ```
 //!
+//! [architecture]: https://blas-lapack-rs.github.io/architecture
 //! [lapacke]: https://en.wikipedia.org/wiki/LAPACK
-//! [usage]: https://blas-lapack-rs.github.io/usage
 
 extern crate lapacke_sys as ffi;
 extern crate libc;
