@@ -9,6 +9,7 @@ from function import read_functions
 
 select_re = re.compile('LAPACK_(\w)_SELECT(\d)')
 
+
 def is_scalar(name, cty, f):
     return (
         'c_char' in cty or
@@ -94,10 +95,15 @@ def translate_argument(name, cty, f):
 
     return base
 
+
 def translate_type_base(cty):
     if 'c_char' in cty:
         return 'u8'
-    elif 'c_int' in cty or 'lapack_int' in cty or 'lapack_logical' in cty:
+    elif 'c_int' in cty:
+        return 'i32'
+    elif 'lapack_int' in cty:
+        return 'i32'
+    elif 'lapack_logical' in cty:
         return 'i32'
     elif 'lapack_complex_double' in cty:
         return 'c64'
@@ -110,19 +116,22 @@ def translate_type_base(cty):
 
     assert False, 'cannot translate `{}`'.format(cty)
 
-def translate_body_argument(name, rty):
-    if rty.startswith('Select'):
-        return 'transmute({})'.format(name)
 
+def translate_body_argument(name, rty):
     if rty == 'Layout':
         return '{}.into()'.format(name)
+
+    if rty.startswith('Select'):
+        return 'transmute({})'.format(name)
 
     if rty == 'u8':
         return '{} as c_char'.format(name)
     elif rty == '&mut u8':
         return '{} as *mut _ as *mut _'.format(name)
 
-    elif rty in ['i32', '&mut i32']:
+    elif rty == 'i32':
+        return name
+    elif rty == '&mut i32':
         return name
     elif rty == '&[i32]':
         return '{}.as_ptr()'.format(name)
@@ -149,15 +158,17 @@ def translate_body_argument(name, rty):
 
     assert False, 'cannot translate `{}: {}`'.format(name, rty)
 
+
 def translate_return_type(cty):
-    if cty == 'lapack_int':
-        return 'i32'
-    elif cty == 'c_float':
+    if cty == 'c_float':
         return 'f32'
     elif cty == 'c_double':
         return 'f64'
+    elif cty == 'lapack_int':
+        return 'i32'
 
     assert False, 'cannot translate `{}`'.format(cty)
+
 
 def format_header(f):
     args = format_header_arguments(f)
@@ -169,11 +180,13 @@ def format_header(f):
 def format_body(f):
     return 'ffi::LAPACKE_{}({})'.format(f.name, format_body_arguments(f))
 
+
 def format_header_arguments(f):
     s = []
     for arg in f.args:
         s.append('{}: {}'.format(arg[0], translate_argument(*arg, f=f)))
     return ', '.join(s)
+
 
 def format_body_arguments(f):
     s = []
@@ -182,17 +195,20 @@ def format_body_arguments(f):
         s.append(translate_body_argument(arg[0], rty))
     return ', '.join(s)
 
+
 def prepare(code):
     lines = filter(lambda line: not re.match(r'^\s*//.*', line), code.split('\n'))
     lines = re.sub(r'\s+', ' ', ''.join(lines)).strip().split(';')
     lines = filter(lambda line: not re.match(r'^\s*$', line), lines)
     return [Function.parse(line) for line in lines]
 
+
 def do(functions):
     for f in functions:
         print('\n#[inline]')
         print(format_header(f) + ' {')
         print('    ' + format_body(f) + '\n}')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
