@@ -28,6 +28,16 @@ for (one, another) in w.iter().zip(&[2.0, 2.0, 5.0]) {
 }
 ```
 
+## Development
+
+The function definitions are generated via a Python script based on the content
+of [`lapacke-sys`]. To re-generate, run the following commands:
+
+```sh
+./bin/generate.py --sys ../lapacke-sys > src/functions.rs
+rustfmt src/functions.rs
+```
+
 ## Contribution
 
 Your contribution is highly appreciated. Do not hesitate to open an issue or a
@@ -36,6 +46,8 @@ will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [architecture]: https://blas-lapack-rs.github.io/architecture
 [lapacke]: https://en.wikipedia.org/wiki/LAPACK
+
+[`lapacke-sys`]: https://github.com/blas-lapack-rs/lapacke-sys
 
 [build-img]: https://travis-ci.org/blas-lapack-rs/lapacke.svg?branch=master
 [build-url]: https://travis-ci.org/blas-lapack-rs/lapacke
