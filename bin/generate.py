@@ -100,20 +100,18 @@ def translate_argument(name, cty, f):
 def translate_type_base(cty):
     if 'c_char' in cty:
         return 'u8'
-    elif 'c_int' in cty:
-        return 'i32'
+    elif 'c_float' in cty:
+        return 'f32'
+    elif 'c_double' in cty:
+        return 'f64'
     elif 'lapack_int' in cty:
         return 'i32'
     elif 'lapack_logical' in cty:
         return 'i32'
-    elif 'lapack_complex_double' in cty:
-        return 'c64'
     elif 'lapack_complex_float' in cty:
         return 'c32'
-    elif 'c_double' in cty:
-        return 'f64'
-    elif 'c_float' in cty:
-        return 'f32'
+    elif 'lapack_complex_double' in cty:
+        return 'c64'
 
     assert False, 'cannot translate `{}`'.format(cty)
 
@@ -161,12 +159,12 @@ def translate_body_argument(name, rty):
 
 
 def translate_return_type(cty):
-    if cty == 'c_float':
+    if cty == 'lapack_int':
+        return 'i32'
+    elif cty == 'c_float':
         return 'f32'
     elif cty == 'c_double':
         return 'f64'
-    elif cty == 'lapack_int':
-        return 'i32'
 
     assert False, 'cannot translate `{}`'.format(cty)
 
