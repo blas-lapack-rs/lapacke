@@ -48,17 +48,20 @@ def is_scalar(name, cty, f):
         ] or
         not (
             'geev' in f.name or
+            'ggev' in f.name or
             'tgsna' in f.name or
             'trsna' in f.name
-        ) and name in [
+        ) 
+        and name in [
             'vl',
             'vr',
-        ] or
+        ] 
+        or
         not ('tgevc' in f.name) and name in [
             'p',
         ] or
-        name.startswith('alpha') or
-        name.startswith('beta') or
+        # name.startswith('alpha') or
+        # name.startswith('beta') or
         name.startswith('inc') or
         name.startswith('k') or
         name.startswith('ld') or
