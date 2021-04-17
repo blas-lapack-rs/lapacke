@@ -102,4 +102,4 @@ convert! {
     Layout => i32,
 }
 
-include!("functions.rs");
+include!("lapacke-sys.rs");

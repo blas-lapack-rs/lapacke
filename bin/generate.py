@@ -196,7 +196,7 @@ def do(functions):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--sys', required=True)
+    parser.add_argument('--sys', default='lapacke-sys')
     arguments = parser.parse_args()
     path = os.path.join(arguments.sys, 'src', 'lib.rs')
     do(prepare(read_functions(path)))
