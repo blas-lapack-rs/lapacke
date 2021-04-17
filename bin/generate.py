@@ -66,6 +66,7 @@ def is_scalar(name, cty, f):
         name.startswith('vers')
     )
 
+
 def translate_argument(name, cty, f):
     if name == 'layout':
         return 'Layout'
@@ -177,6 +178,7 @@ def format_header(f):
     else:
         return 'pub unsafe fn {}({}) -> {}'.format(f.name, args, translate_return_type(f.ret))
 
+
 def format_body(f):
     return 'ffi::LAPACKE_{}({})'.format(f.name, format_body_arguments(f))
 
@@ -197,7 +199,8 @@ def format_body_arguments(f):
 
 
 def prepare(code):
-    lines = filter(lambda line: not re.match(r'^\s*//.*', line), code.split('\n'))
+    lines = filter(lambda line: not re.match(r'^\s*//.*', line),
+                   code.split('\n'))
     lines = re.sub(r'\s+', ' ', ''.join(lines)).strip().split(';')
     lines = filter(lambda line: not re.match(r'^\s*$', line), lines)
     return [Function.parse(line) for line in lines]
