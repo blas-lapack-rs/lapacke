@@ -58,8 +58,6 @@ def is_scalar(name, cty, f):
         not ('tgevc' in f.name) and name in [
             'p',
         ] or
-        # name.startswith('alpha') or
-        # name.startswith('beta') or
         name.startswith('inc') or
         name.startswith('k') or
         name.startswith('ld') or
