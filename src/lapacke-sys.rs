@@ -42484,9 +42484,17 @@ pub unsafe fn slapmr_work(
     n: i32,
     x: &mut [f32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_slapmr_work(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_slapmr_work(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -42497,9 +42505,17 @@ pub unsafe fn dlapmr_work(
     n: i32,
     x: &mut [f64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_dlapmr_work(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_dlapmr_work(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -42510,7 +42526,7 @@ pub unsafe fn clapmr_work(
     n: i32,
     x: &mut [c32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_clapmr_work(
         layout.into(),
@@ -42519,7 +42535,7 @@ pub unsafe fn clapmr_work(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -42531,7 +42547,7 @@ pub unsafe fn zlapmr_work(
     n: i32,
     x: &mut [c64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_zlapmr_work(
         layout.into(),
@@ -42540,7 +42556,7 @@ pub unsafe fn zlapmr_work(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -42552,9 +42568,17 @@ pub unsafe fn slapmt_work(
     n: i32,
     x: &mut [f32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_slapmt_work(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_slapmt_work(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -42565,9 +42589,17 @@ pub unsafe fn dlapmt_work(
     n: i32,
     x: &mut [f64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_dlapmt_work(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_dlapmt_work(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -42578,7 +42610,7 @@ pub unsafe fn clapmt_work(
     n: i32,
     x: &mut [c32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_clapmt_work(
         layout.into(),
@@ -42587,7 +42619,7 @@ pub unsafe fn clapmt_work(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -42599,7 +42631,7 @@ pub unsafe fn zlapmt_work(
     n: i32,
     x: &mut [c64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_zlapmt_work(
         layout.into(),
@@ -42608,7 +42640,7 @@ pub unsafe fn zlapmt_work(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -58878,9 +58910,17 @@ pub unsafe fn slapmr(
     n: i32,
     x: &mut [f32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_slapmr(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_slapmr(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -58891,9 +58931,17 @@ pub unsafe fn dlapmr(
     n: i32,
     x: &mut [f64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_dlapmr(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_dlapmr(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -58904,7 +58952,7 @@ pub unsafe fn clapmr(
     n: i32,
     x: &mut [c32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_clapmr(
         layout.into(),
@@ -58913,7 +58961,7 @@ pub unsafe fn clapmr(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -58925,7 +58973,7 @@ pub unsafe fn zlapmr(
     n: i32,
     x: &mut [c64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_zlapmr(
         layout.into(),
@@ -58934,7 +58982,7 @@ pub unsafe fn zlapmr(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -58946,9 +58994,17 @@ pub unsafe fn slapmt(
     n: i32,
     x: &mut [f32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_slapmt(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_slapmt(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -58959,9 +59015,17 @@ pub unsafe fn dlapmt(
     n: i32,
     x: &mut [f64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
-    ffi::LAPACKE_dlapmt(layout.into(), forwrd, m, n, x.as_mut_ptr(), ldx, k)
+    ffi::LAPACKE_dlapmt(
+        layout.into(),
+        forwrd,
+        m,
+        n,
+        x.as_mut_ptr(),
+        ldx,
+        k.as_mut_ptr(),
+    )
 }
 
 #[inline]
@@ -58972,7 +59036,7 @@ pub unsafe fn clapmt(
     n: i32,
     x: &mut [c32],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_clapmt(
         layout.into(),
@@ -58981,7 +59045,7 @@ pub unsafe fn clapmt(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
@@ -58993,7 +59057,7 @@ pub unsafe fn zlapmt(
     n: i32,
     x: &mut [c64],
     ldx: i32,
-    k: &mut i32,
+    k: &mut [i32],
 ) -> i32 {
     ffi::LAPACKE_zlapmt(
         layout.into(),
@@ -59002,7 +59066,7 @@ pub unsafe fn zlapmt(
         n,
         x.as_mut_ptr() as *mut _,
         ldx,
-        k,
+        k.as_mut_ptr(),
     )
 }
 
