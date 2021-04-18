@@ -24134,7 +24134,7 @@ pub unsafe fn stgsen(
     m: &mut i32,
     pl: &mut [f32],
     pr: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
 ) -> i32 {
     ffi::LAPACKE_stgsen(
         layout.into(),
@@ -24157,7 +24157,7 @@ pub unsafe fn stgsen(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
     )
 }
 
@@ -24183,7 +24183,7 @@ pub unsafe fn dtgsen(
     m: &mut i32,
     pl: &mut [f64],
     pr: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
 ) -> i32 {
     ffi::LAPACKE_dtgsen(
         layout.into(),
@@ -24206,7 +24206,7 @@ pub unsafe fn dtgsen(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
     )
 }
 
@@ -24231,7 +24231,7 @@ pub unsafe fn ctgsen(
     m: &mut i32,
     pl: &mut [f32],
     pr: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
 ) -> i32 {
     ffi::LAPACKE_ctgsen(
         layout.into(),
@@ -24253,7 +24253,7 @@ pub unsafe fn ctgsen(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
     )
 }
 
@@ -24278,7 +24278,7 @@ pub unsafe fn ztgsen(
     m: &mut i32,
     pl: &mut [f64],
     pr: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
 ) -> i32 {
     ffi::LAPACKE_ztgsen(
         layout.into(),
@@ -24300,7 +24300,7 @@ pub unsafe fn ztgsen(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
     )
 }
 
@@ -24540,7 +24540,7 @@ pub unsafe fn stgsna(
     vr: &[f32],
     ldvr: i32,
     s: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
     mm: i32,
     m: &mut i32,
 ) -> i32 {
@@ -24559,7 +24559,7 @@ pub unsafe fn stgsna(
         vr.as_ptr(),
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
     )
@@ -24581,7 +24581,7 @@ pub unsafe fn dtgsna(
     vr: &[f64],
     ldvr: i32,
     s: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
     mm: i32,
     m: &mut i32,
 ) -> i32 {
@@ -24600,7 +24600,7 @@ pub unsafe fn dtgsna(
         vr.as_ptr(),
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
     )
@@ -24622,7 +24622,7 @@ pub unsafe fn ctgsna(
     vr: &[c32],
     ldvr: i32,
     s: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
     mm: i32,
     m: &mut i32,
 ) -> i32 {
@@ -24641,7 +24641,7 @@ pub unsafe fn ctgsna(
         vr.as_ptr() as *const _,
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
     )
@@ -24663,7 +24663,7 @@ pub unsafe fn ztgsna(
     vr: &[c64],
     ldvr: i32,
     s: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
     mm: i32,
     m: &mut i32,
 ) -> i32 {
@@ -24682,7 +24682,7 @@ pub unsafe fn ztgsna(
         vr.as_ptr() as *const _,
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
     )
@@ -54972,7 +54972,7 @@ pub unsafe fn stgsen_work(
     m: &mut i32,
     pl: &mut [f32],
     pr: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
     work: &mut [f32],
     lwork: i32,
     iwork: &mut [i32],
@@ -54999,7 +54999,7 @@ pub unsafe fn stgsen_work(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         work.as_mut_ptr(),
         lwork,
         iwork.as_mut_ptr(),
@@ -55029,7 +55029,7 @@ pub unsafe fn dtgsen_work(
     m: &mut i32,
     pl: &mut [f64],
     pr: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
     work: &mut [f64],
     lwork: i32,
     iwork: &mut [i32],
@@ -55056,7 +55056,7 @@ pub unsafe fn dtgsen_work(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         work.as_mut_ptr(),
         lwork,
         iwork.as_mut_ptr(),
@@ -55085,7 +55085,7 @@ pub unsafe fn ctgsen_work(
     m: &mut i32,
     pl: &mut [f32],
     pr: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
     work: &mut [c32],
     lwork: i32,
     iwork: &mut [i32],
@@ -55111,7 +55111,7 @@ pub unsafe fn ctgsen_work(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         work.as_mut_ptr() as *mut _,
         lwork,
         iwork.as_mut_ptr(),
@@ -55140,7 +55140,7 @@ pub unsafe fn ztgsen_work(
     m: &mut i32,
     pl: &mut [f64],
     pr: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
     work: &mut [c64],
     lwork: i32,
     iwork: &mut [i32],
@@ -55166,7 +55166,7 @@ pub unsafe fn ztgsen_work(
         m,
         pl.as_mut_ptr(),
         pr.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         work.as_mut_ptr() as *mut _,
         lwork,
         iwork.as_mut_ptr(),
@@ -55418,7 +55418,7 @@ pub unsafe fn stgsna_work(
     vr: &[f32],
     ldvr: i32,
     s: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
     mm: i32,
     m: &mut i32,
     work: &mut [f32],
@@ -55440,7 +55440,7 @@ pub unsafe fn stgsna_work(
         vr.as_ptr(),
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
         work.as_mut_ptr(),
@@ -55465,7 +55465,7 @@ pub unsafe fn dtgsna_work(
     vr: &[f64],
     ldvr: i32,
     s: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
     mm: i32,
     m: &mut i32,
     work: &mut [f64],
@@ -55487,7 +55487,7 @@ pub unsafe fn dtgsna_work(
         vr.as_ptr(),
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
         work.as_mut_ptr(),
@@ -55512,7 +55512,7 @@ pub unsafe fn ctgsna_work(
     vr: &[c32],
     ldvr: i32,
     s: &mut [f32],
-    dif: &mut f32,
+    dif: &mut [f32],
     mm: i32,
     m: &mut i32,
     work: &mut [c32],
@@ -55534,7 +55534,7 @@ pub unsafe fn ctgsna_work(
         vr.as_ptr() as *const _,
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
         work.as_mut_ptr() as *mut _,
@@ -55559,7 +55559,7 @@ pub unsafe fn ztgsna_work(
     vr: &[c64],
     ldvr: i32,
     s: &mut [f64],
-    dif: &mut f64,
+    dif: &mut [f64],
     mm: i32,
     m: &mut i32,
     work: &mut [c64],
@@ -55581,7 +55581,7 @@ pub unsafe fn ztgsna_work(
         vr.as_ptr() as *const _,
         ldvr,
         s.as_mut_ptr(),
-        dif,
+        dif.as_mut_ptr(),
         mm,
         m,
         work.as_mut_ptr() as *mut _,
