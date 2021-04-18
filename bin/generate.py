@@ -20,7 +20,6 @@ def is_scalar(name, cty, f):
             'anorm',
             'bbnrm',
             'colcnd',
-            'dif',
             'ihi',
             'il',
             'ilo',
@@ -37,7 +36,6 @@ def is_scalar(name, cty, f):
             'n_err_bnds',
             'nb',
             'nrhs',
-            'q',
             'rank',
             'rcond',
             'rowcnd',
@@ -52,9 +50,20 @@ def is_scalar(name, cty, f):
             'larfg' in f.name
         ) or
         name in [
+            'dif',
+        ] and not (
+            'tgsen' in f.name or
+            'tgsna' in f.name
+        ) or
+        name in [
             'p',
         ] and not (
             'tgevc' in f.name
+        ) or
+        name in [
+            'q'
+        ] and (
+            'lapack_int' in cty
         ) or
         name in [
             'vl',
@@ -62,11 +71,17 @@ def is_scalar(name, cty, f):
         ] and not (
             'geev' in f.name or
             'ggev' in f.name or
+            'hsein' in f.name or
+            'tgevc' in f.name or
             'tgsna' in f.name or
+            'trevc' in f.name or
             'trsna' in f.name
         ) or
+        name.startswith('k') and not (
+            'lapmr' in f.name or
+            'lapmt' in f.name
+        ) or
         name.startswith('inc') or
-        name.startswith('k') or
         name.startswith('ld') or
         name.startswith('tol') or
         name.startswith('vers')
