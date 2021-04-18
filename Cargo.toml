@@ -4,6 +4,7 @@ version = "0.4.0"
 license = "Apache-2.0/MIT"
 authors = [
     "Ivan Ukhov <ivan.ukhov@gmail.com>",
+    "Selvavignesh Vedamanickam <selvavm@hotmail.com>",
     "Toshiki Teramura <toshiki.teramura@gmail.com>",
 ]
 description = "The package provides wrappers for LAPACKE (C)."
