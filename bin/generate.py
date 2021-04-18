@@ -46,24 +46,30 @@ def is_scalar(name, cty, f):
             'tryrac',
             'vu',
         ] or
-        not (
+        name in [
+            'alpha',
+        ] and (
+            'larfg' in f.name
+        ) or
+        name in [
+            'p',
+        ] and not (
+            'tgevc' in f.name
+        ) or
+        name in [
+            'vl',
+            'vr',
+        ] and not (
             'geev' in f.name or
             'ggev' in f.name or
             'tgsna' in f.name or
             'trsna' in f.name
-        ) and name in [
-            'vl',
-            'vr',
-        ] or
-        not ('tgevc' in f.name) and name in [
-            'p',
-        ] or
+        ) or
         name.startswith('inc') or
         name.startswith('k') or
         name.startswith('ld') or
         name.startswith('tol') or
-        name.startswith('vers') or
-        ('larfg' in f.name and name.startswith('alpha'))
+        name.startswith('vers')
     )
 
 
