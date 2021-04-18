@@ -51,12 +51,10 @@ def is_scalar(name, cty, f):
             'ggev' in f.name or
             'tgsna' in f.name or
             'trsna' in f.name
-        ) 
-        and name in [
+        ) and name in [
             'vl',
             'vr',
-        ] 
-        or
+        ] or
         not ('tgevc' in f.name) and name in [
             'p',
         ] or
