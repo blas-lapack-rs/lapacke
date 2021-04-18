@@ -13561,32 +13561,20 @@ pub unsafe fn zlarfb(
 }
 
 #[inline]
-pub unsafe fn slarfg(n: i32, alpha: &mut [f32], x: &mut [f32], incx: i32, tau: &mut [f32]) -> i32 {
-    ffi::LAPACKE_slarfg(
-        n,
-        alpha.as_mut_ptr(),
-        x.as_mut_ptr(),
-        incx,
-        tau.as_mut_ptr(),
-    )
+pub unsafe fn slarfg(n: i32, alpha: &mut f32, x: &mut [f32], incx: i32, tau: &mut [f32]) -> i32 {
+    ffi::LAPACKE_slarfg(n, alpha, x.as_mut_ptr(), incx, tau.as_mut_ptr())
 }
 
 #[inline]
-pub unsafe fn dlarfg(n: i32, alpha: &mut [f64], x: &mut [f64], incx: i32, tau: &mut [f64]) -> i32 {
-    ffi::LAPACKE_dlarfg(
-        n,
-        alpha.as_mut_ptr(),
-        x.as_mut_ptr(),
-        incx,
-        tau.as_mut_ptr(),
-    )
+pub unsafe fn dlarfg(n: i32, alpha: &mut f64, x: &mut [f64], incx: i32, tau: &mut [f64]) -> i32 {
+    ffi::LAPACKE_dlarfg(n, alpha, x.as_mut_ptr(), incx, tau.as_mut_ptr())
 }
 
 #[inline]
-pub unsafe fn clarfg(n: i32, alpha: &mut [c32], x: &mut [c32], incx: i32, tau: &mut [c32]) -> i32 {
+pub unsafe fn clarfg(n: i32, alpha: &mut c32, x: &mut [c32], incx: i32, tau: &mut [c32]) -> i32 {
     ffi::LAPACKE_clarfg(
         n,
-        alpha.as_mut_ptr() as *mut _,
+        alpha as *mut _ as *mut _,
         x.as_mut_ptr() as *mut _,
         incx,
         tau.as_mut_ptr() as *mut _,
@@ -13594,10 +13582,10 @@ pub unsafe fn clarfg(n: i32, alpha: &mut [c32], x: &mut [c32], incx: i32, tau: &
 }
 
 #[inline]
-pub unsafe fn zlarfg(n: i32, alpha: &mut [c64], x: &mut [c64], incx: i32, tau: &mut [c64]) -> i32 {
+pub unsafe fn zlarfg(n: i32, alpha: &mut c64, x: &mut [c64], incx: i32, tau: &mut [c64]) -> i32 {
     ffi::LAPACKE_zlarfg(
         n,
-        alpha.as_mut_ptr() as *mut _,
+        alpha as *mut _ as *mut _,
         x.as_mut_ptr() as *mut _,
         incx,
         tau.as_mut_ptr() as *mut _,
@@ -43143,48 +43131,36 @@ pub unsafe fn zlarfb_work(
 #[inline]
 pub unsafe fn slarfg_work(
     n: i32,
-    alpha: &mut [f32],
+    alpha: &mut f32,
     x: &mut [f32],
     incx: i32,
     tau: &mut [f32],
 ) -> i32 {
-    ffi::LAPACKE_slarfg_work(
-        n,
-        alpha.as_mut_ptr(),
-        x.as_mut_ptr(),
-        incx,
-        tau.as_mut_ptr(),
-    )
+    ffi::LAPACKE_slarfg_work(n, alpha, x.as_mut_ptr(), incx, tau.as_mut_ptr())
 }
 
 #[inline]
 pub unsafe fn dlarfg_work(
     n: i32,
-    alpha: &mut [f64],
+    alpha: &mut f64,
     x: &mut [f64],
     incx: i32,
     tau: &mut [f64],
 ) -> i32 {
-    ffi::LAPACKE_dlarfg_work(
-        n,
-        alpha.as_mut_ptr(),
-        x.as_mut_ptr(),
-        incx,
-        tau.as_mut_ptr(),
-    )
+    ffi::LAPACKE_dlarfg_work(n, alpha, x.as_mut_ptr(), incx, tau.as_mut_ptr())
 }
 
 #[inline]
 pub unsafe fn clarfg_work(
     n: i32,
-    alpha: &mut [c32],
+    alpha: &mut c32,
     x: &mut [c32],
     incx: i32,
     tau: &mut [c32],
 ) -> i32 {
     ffi::LAPACKE_clarfg_work(
         n,
-        alpha.as_mut_ptr() as *mut _,
+        alpha as *mut _ as *mut _,
         x.as_mut_ptr() as *mut _,
         incx,
         tau.as_mut_ptr() as *mut _,
@@ -43194,14 +43170,14 @@ pub unsafe fn clarfg_work(
 #[inline]
 pub unsafe fn zlarfg_work(
     n: i32,
-    alpha: &mut [c64],
+    alpha: &mut c64,
     x: &mut [c64],
     incx: i32,
     tau: &mut [c64],
 ) -> i32 {
     ffi::LAPACKE_zlarfg_work(
         n,
-        alpha.as_mut_ptr() as *mut _,
+        alpha as *mut _ as *mut _,
         x.as_mut_ptr() as *mut _,
         incx,
         tau.as_mut_ptr() as *mut _,

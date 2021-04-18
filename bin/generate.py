@@ -66,7 +66,8 @@ def is_scalar(name, cty, f):
         name.startswith('k') or
         name.startswith('ld') or
         name.startswith('tol') or
-        name.startswith('vers')
+        name.startswith('vers') or
+        ('larfg' in f.name and name.startswith('alpha'))
     )
 
 
